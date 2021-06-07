@@ -9,8 +9,6 @@ html {
 }
 
 .labels {
-  border: solid 1px gray;
-  border-radius: 5px;
   border-radius: 13px;
   width: 0px;
   margin: 4px 0px 0px 121px;

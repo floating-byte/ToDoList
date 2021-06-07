@@ -1,13 +1,5 @@
 @use "sass:color";
-
-
-
-$_main:#8EE4AF;
-$_page:#5CDB95;
-$_note:#379683;
-$_4:#f5e6ca;
-
-
+@import "colors";
 
 html {
 	background: $_main;

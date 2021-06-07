@@ -1,13 +1,6 @@
 @use "sass:color";
-@mixin border-setting {
-	border: solid 1px gray;
-	border-radius: 5px;
-}
+@import "colors";
 
-$_main:#8EE4AF;
-$_page:#5CDB95;
-$_note:#379683;
-$_4:#f5e6ca;
 * {
 	margin: 0;
 	padding: 0;
@@ -19,7 +12,6 @@ html {
 }
 
 .labels {
-	@include border-setting;
 	border-radius: 13px;
 	width: 0px;
 	margin: 4px 0px 0px 121px;
