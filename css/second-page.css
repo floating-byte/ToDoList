@@ -1,0 +1,193 @@
+#second-page {
+  width: 382px;
+  height: 442px;
+  background: #5CDB95;
+  border: transparent;
+  border-radius: 5px;
+  margin: -445px 0px 0px 8px;
+  padding: 4px 0px 0px 4px;
+  display: none;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+}
+#second-page #title-info {
+  margin: 0px 0px 11px 0px;
+}
+#second-page #title-info #title-icon {
+  width: 30px;
+}
+#second-page #title-info #title-text {
+  width: 341px;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-bottom: solid 3px white;
+  margin: -32px 0px 6px 36px;
+  display: block;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#second-page #desc-info #desc-header {
+  margin: 0px 0px 33px -3px;
+}
+#second-page #desc-info #desc-header p {
+  margin: 0px 0px -18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+}
+#second-page #desc-info #desc-header #desc-icon {
+  width: 33px;
+  margin: -20px 0px 0px 0px;
+}
+#second-page #desc-info #desc-header #desc-dropdown {
+  position: relative;
+  top: -5px;
+  left: 129px;
+  transform: rotate(180deg);
+}
+#second-page #desc-info #desc-header #desc-dropdown:hover {
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 20px;
+}
+#second-page #desc-info #desc-text {
+  border-radius: 5px;
+  padding: 6px 5px 5px 7px;
+  display: block;
+  line-height: 20px;
+  width: 363px;
+  min-height: 100px;
+  max-height: 115px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 13px;
+  position: relative;
+  top: -31px;
+  left: 2px;
+  outline: none;
+  background: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#second-page #comment-info {
+  position: relative;
+  top: -17px;
+}
+#second-page #comment-info #comment-header {
+  margin: -9px 0px 41px 0px;
+}
+#second-page #comment-info #comment-header p {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0px 0px -17px 34px;
+}
+#second-page #comment-info #comment-header #comment-icon {
+  width: 30px;
+  margin: -17px 0px 0px 0px;
+}
+#second-page #comment-info #comment-header #comment-dropdown {
+  position: relative;
+  top: -5px;
+  left: 87px;
+  transform: rotate(180deg);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#second-page #comment-info #comment-header #comment-dropdown:hover {
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 20px;
+}
+#second-page #comment-info #comment-container {
+  width: 374px;
+  /* border: solid; */
+  height: 130px;
+  position: relative;
+  top: -39px;
+  left: 2px;
+  border-radius: 8px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: #3FBB77;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#second-page #comment-info #comment-container .comment-data {
+  width: 337px;
+  border-radius: 5px;
+  padding: 15px 0px 0px 6px;
+  margin: 6px 0px 0px 5px;
+  overflow-wrap: break-word;
+  background: #379683;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#second-page #comment-info #comment-container .comment-data .comment-date-info {
+  position: relative;
+  top: -14px;
+}
+#second-page #comment-info #comment-container .comment-data .comment-date-info .comment-time {
+  margin: -16px 0px 0px 75px;
+}
+#second-page #comment-info #comment-container .comment-data .comment-text {
+  position: relative;
+  top: -7px;
+  left: 8px;
+}
+
+#add-comment-active {
+  width: 371px;
+  position: relative;
+  top: -40px;
+  left: 3px;
+}
+#add-comment-active #new-comment-text {
+  border-radius: 5px;
+  padding: 7px 0px 5px 6px;
+  margin: 0;
+  display: block;
+  width: 369px;
+  min-height: 25px;
+  max-height: 46px;
+  position: relative;
+  top: -1px;
+  left: -1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 5px 0px 10px 0px;
+  outline: none;
+  background: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#add-comment-active button {
+  display: inline;
+  position: absolute;
+  top: -32px;
+  left: 155px;
+  border: none;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+}
+#add-comment-active button:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+#add-comment-not-active {
+  position: relative;
+  top: -43px;
+  left: 2px;
+}
+#add-comment-not-active #new-comment-text {
+  border-radius: 5px;
+  display: block;
+  padding: 7px 0px 5px 6px;
+  margin: 0px 0px 5px 0px;
+  height: 19px;
+  width: 369px;
+  outline: none;
+  background: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#add-comment-not-active button {
+  display: none;
+}
+
+/*# sourceMappingURL=second-page.css.map */

@@ -1,0 +1,174 @@
+@use "sass:color";
+
+
+
+$_main:#8EE4AF;
+$_page:#5CDB95;
+$_note:#379683;
+$_4:#f5e6ca;
+
+
+
+html {
+	background: $_main;
+	width: 352px;
+}
+
+#first-page {
+	width: 331px;
+	height: 445px;
+  background: $_page;
+
+  margin: 11px 0px 0px 11px;
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+  border: transparent;
+	border-radius: 8px;
+
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+	.note {
+		width: 292px;
+		height: 50px;
+    background: $_note;
+
+		border: transparent;
+		border-radius: 3px;
+
+    margin: 5px 0px 0px 8px;
+
+    ::selection { background: transparent; }
+    ::-moz-selection { background: transparent; }
+
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+
+    &:hover{
+      background: lighten($_note,2%);
+    }
+    &:active{
+      background: darken($_note,2%);
+    }
+  	.title {
+			position: relative;
+			top: 2px;
+			left: 11px;
+
+			font-weight: 800;
+			font-size: 17px;
+		}
+		.date-info {
+
+			font-size: 13px;
+			line-height: 15px;
+      font-weight: 600;
+
+			margin: -25px 0px 0px 219px;
+			color: #212435;
+			.date {
+				margin: 7px 0px 0px -13px;
+			}
+			.time {
+				margin: 0px 0px 0px 27px;
+			}
+		}
+	}
+	.icons {
+
+
+    .description-icon,
+    .comment,
+    .comment .comment-icon{
+      position: relative;
+    }
+    margin: 15px 0px 0px -31px;
+		width: 0px;
+		height: 0px;
+    .description-icon {
+      width: 24px;
+
+      top: -26px;
+      left: 152px;
+    }
+    .comment {
+      top: -31px;
+      left: 185px;
+
+      p {
+        font-weight: 700;
+        margin: -21px 0px 0px 0px;
+        font-size: 15px;
+        color: #212435;
+      }
+      .comment-icon {
+        width: 26px;
+
+        top: -21px;
+        left: 11px;
+      }
+    }
+	}
+}
+
+
+
+#control-btns {
+  #create-note-btn,
+  #cancel-btn,
+  #save-btn {
+    width: 95px;
+    height: 28px;
+
+    background: $_note;
+
+    position: absolute;
+    top: 462px;
+
+    border: transparent;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+
+    &:hover{
+      background: #ccc;
+      font-weight: 700;
+    }
+  }
+
+	#create-note-btn {
+    left: 133px;
+	}
+	#cancel-btn {
+    display: none;
+    left: 208px;
+  }
+	#save-btn {
+    display:none;
+    left: 81px;
+	}
+}
+
+//scroleBar
+/**********************************/
+::-webkit-scrollbar {
+	width: 22px;
+}
+::-webkit-scrollbar-track {
+	background-color: darken($_page, 5%);
+	border-radius: 0px 8px 8px 0px;
+}
+::-webkit-scrollbar-thumb {
+      background-color: #54AE7D;
+      border: 6px solid transparent;
+      border-radius: 10px;
+      background-clip: content-box;
+	&:hover {
+		background-color: lighten(#54AE7D, 4%);
+		cursor: pointer;
+	}
+}
+/**********************************/

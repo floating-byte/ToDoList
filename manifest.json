@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name":"todo",
+	"version":"0.1",
+	"browser_action":
+	{
+		"defaut_title":"todo list",
+		"default_popup":"popup.html"
+	},
+	"icons": { "16": "icons/notes.png",
+           "48": "icons/notes.png",
+          "128": "icons/notes.png" }
+}

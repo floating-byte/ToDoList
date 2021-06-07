@@ -1,0 +1,79 @@
+@use "sass:color";
+@mixin border-setting {
+	border: solid 1px gray;
+	border-radius: 5px;
+}
+
+$_main:#8EE4AF;
+$_page:#5CDB95;
+$_note:#379683;
+$_4:#f5e6ca;
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 415px;
+	height: 500px;
+}
+
+.labels {
+	@include border-setting;
+	border-radius: 13px;
+	width: 0px;
+	margin: 4px 0px 0px 121px;
+	padding: 0px 127px 0px 22px;
+	font-size: 21px;
+	font-weight: 600;
+	box-shadow: 0px 0px 7px 0px grey
+}
+
+
+#note-option-menu {
+	display: none;
+	width: 100px;
+	background: white;
+	position: absolute;
+	z-index: 1;
+	border: solid 1px #948282;
+	border-radius: 2px;
+	.option-menu-btn {
+		width: inherit;
+		height: 22px;
+		background: none;
+		border: none;
+		font-size: 14px;
+		color: #191818;
+		&:hover {
+			background: #b9b3b3;
+		}
+	}
+	#option-note-id {
+		display: none;
+	}
+}
+
+.edit-box {
+	margin: 6px 0px 0px 11px;
+	padding: 0px 24px 0px 8px;
+	width: 240px;
+	height: 25px;
+	border: transparent;
+	border-radius: 4px;
+	outline: none;
+}
+
+#save-edit-title {
+	position: relative;
+	top: -25px;
+	left: 259px;
+	width: 24px;
+	height: 25px;
+	border-radius: 4px;
+	background: transparent;
+	border: transparent;
+	&:hover {
+		background: #ccc;
+	}
+}

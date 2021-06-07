@@ -1,0 +1,68 @@
+<!-- IDEA: class that change color  -->
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/first-page.css">
+	<link rel="stylesheet" type="text/css" href="css/second-page.css">
+<head>
+</head>
+
+<body>
+	<div id="note-option-menu" oncontextmenu="return false;">
+		<button type="button" name="button" id="edit-note" class="option-menu-btn">Edit</button>
+		<button type="button" name="button" id="delete-note" class="option-menu-btn">Delete</button>
+		<p id="option-note-id"></p>
+	</div>
+	<div id="first-page">
+
+	</div>
+	<div id="second-page">
+		<div id="title-info">
+			<img id="title-icon" src="icons/title.svg">
+			<input id="title-text" type="text" spellcheck="false">
+		</div>
+
+		<div id="desc-info">
+			<div id="desc-header">
+				<p>Description:</p>
+				<img id="desc-icon" src="icons/description.svg">
+				<img src="icons/dropdown.svg" id="desc-dropdown">
+			</div>
+
+			<span id="desc-text" role="textbox" contenteditable spellcheck="false"></span>
+		</div>
+
+		<div id="comment-info">
+			<div id="comment-header">
+				<p>Comment:</p>
+				<img id="comment-icon" src="icons/comment.svg">
+				<img src="icons/dropdown.svg" id="comment-dropdown">
+			</div>
+			<div id="add-comment-not-active" >
+				<span id="new-comment-text" role="textbox" contenteditable spellcheck="false"></span>
+				<button type="button" id="save-comment"><img src="icons/save.svg"></button>
+			</div>
+
+			<div id="comment-container">
+
+
+			</div>
+		</div>
+
+		<p id="note-id" style="display:none;"></p>
+	</div>
+
+	<div id="control-btns">
+		<button type="button"  id="create-note-btn">	New Note </button>
+		<button type="button" id="cancel-btn">Clear</button>
+		<button type="button" id="save-btn">Save</button>
+
+	</div>
+</body>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/store.js"></script>
+	<script src="js/pageAction.js"></script>
+	<script src="js/main.js"></script>
+</html>
