@@ -1,11 +1,3 @@
-@use "sass:color";
-@import "colors";
-
-html {
-	background: $_main;
-	width: 352px;
-}
-
 #first-page {
 	width: 331px;
 	height: 445px;
@@ -30,8 +22,7 @@ html {
 
     margin: 5px 0px 0px 8px;
 
-    ::selection { background: transparent; }
-    ::-moz-selection { background: transparent; }
+		@include disable-text-selection;
 
     filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
     cursor: pointer;
@@ -65,18 +56,47 @@ html {
 				margin: 0px 0px 0px 27px;
 			}
 		}
+		.edit-box {
+			margin: 6px 0px 0px 11px;
+			padding: 0px 24px 0px 8px;
+			width: 240px;
+			height: 25px;
+			border: transparent;
+			border-radius: 4px;
+			outline: none;
+
+		}
+		#save-edit-title {
+			position: relative;
+			top: -25px;
+			left: 259px;
+			width: 24px;
+			height: 25px;
+			border-radius: 4px;
+			background: transparent;
+			border: transparent;
+
+			::selection { background: red; }
+			::-moz-selection { background: red; }
+
+			&:hover {
+				background: #ccc;
+			}
+		}
+
 	}
 	.icons {
-
-
-    .description-icon,
-    .comment,
-    .comment .comment-icon{
-      position: relative;
-    }
     margin: 15px 0px 0px -31px;
 		width: 0px;
 		height: 0px;
+
+		.description-icon,
+    .comment,
+    .comment .comment-icon{
+      position: relative;
+			@include disable-text-selection;
+    }
+
     .description-icon {
       width: 24px;
 
@@ -85,11 +105,10 @@ html {
     }
     .comment {
       top: -31px;
-      left: 185px;
-
+      left: 200px;
       p {
         font-weight: 700;
-        margin: -21px 0px 0px 0px;
+        margin: -50px 0px 0px 0px;
         font-size: 15px;
         color: #212435;
       }
@@ -97,70 +116,7 @@ html {
         width: 26px;
 
         top: -21px;
-        left: 11px;
       }
     }
 	}
 }
-
-
-
-#control-btns {
-  #create-note-btn,
-  #cancel-btn,
-  #save-btn {
-    width: 95px;
-    height: 28px;
-
-    background: $_note;
-
-    position: absolute;
-    top: 462px;
-
-    border: transparent;
-    border-radius: 7px;
-
-    font-size: 15px;
-
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
-    cursor: pointer;
-
-    &:hover{
-      background: #ccc;
-      font-weight: 700;
-    }
-  }
-
-	#create-note-btn {
-    left: 133px;
-	}
-	#cancel-btn {
-    display: none;
-    left: 208px;
-  }
-	#save-btn {
-    display:none;
-    left: 81px;
-	}
-}
-
-//scroleBar
-/**********************************/
-::-webkit-scrollbar {
-	width: 22px;
-}
-::-webkit-scrollbar-track {
-	background-color: darken($_page, 5%);
-	border-radius: 0px 8px 8px 0px;
-}
-::-webkit-scrollbar-thumb {
-      background-color: #54AE7D;
-      border: 6px solid transparent;
-      border-radius: 10px;
-      background-clip: content-box;
-	&:hover {
-		background-color: lighten(#54AE7D, 4%);
-		cursor: pointer;
-	}
-}
-/**********************************/

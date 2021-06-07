@@ -196,7 +196,6 @@ function editTitle(){
     $(".edit-box").val(getNote(id).title);
 
     $("#optimize-note .title").hide();
-    //$("#optimize-note").css("height","50px");
     $("#note-option-menu").css("display","none");
 
     saveEditedTitle();
@@ -210,7 +209,7 @@ function saveEditedTitle(){
     let parent = $($("#save-edit-title").parent());
 
     if(newTitle == ""){return ;}
-    if(newTitle == parent.find(".title").text()){unSelecte(); return;}
+    if(newTitle == parent.find(".title").text()){return;}
 
     let id = parent.find(".id").text();
     let notes = store.get("notes");

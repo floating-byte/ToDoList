@@ -1,21 +1,28 @@
-@use "sass:color";
-@import "colors";
-
-
 #second-page {
 	width: 382px;
 	height: 442px;
 	background: $_page;
 	border: transparent;
-	border-radius: 5px;
+	border-radius: 9px;
 	margin: -445px 0px 0px 8px;
 	padding: 4px 0px 0px 4px;
 	display: none;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
 
+	#title-icon,
+	#desc-header p,
+	#desc-header #desc-icon,
+	#desc-dropdown,
+	#comment-dropdown,
+	#comment-header p,
+	#comment-icon {
+		@include disable-text-selection;
+	}
 
 	#title-info {
 		margin: 0px 0px 11px 0px;
+
+
 		#title-icon {
 			width: 30px;
 		}
@@ -62,7 +69,7 @@
 
 		}
 		#desc-text {
-      border-radius: 5px;
+      border-radius: 9px;
       padding: 6px 5px 5px 7px;
       display: block;
       line-height: 20px;
@@ -99,6 +106,7 @@
 				width: 30px;
 				margin: -17px 0px 0px 0px;
 			}
+
 			#comment-dropdown {
 				position: relative;
 				top: -5px;
@@ -115,7 +123,6 @@
 		}
 		#comment-container {
       width: 374px;
-      /* border: solid; */
       height: 130px;
       position: relative;
       top: -39px;
@@ -153,6 +160,8 @@
 			}
 		}
 	}
+
+
 }
 
 #add-comment-active {
@@ -161,7 +170,7 @@
       top: -40px;
       left: 3px;
 	#new-comment-text {
-    border-radius: 5px;
+    border-radius: 9px;
         padding: 7px 0px 5px 6px;
         margin: 0;
         display: block;
@@ -200,7 +209,7 @@
 	top: -43px;
 	left: 2px;
 	#new-comment-text {
-    border-radius: 5px;
+    border-radius: 9px;
         display: block;
         padding: 7px 0px 5px 6px;
 

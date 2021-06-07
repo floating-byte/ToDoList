@@ -48,7 +48,7 @@ function commantHandler(){
 }
 function selecetNotes(){
    $(document).mousedown(function(){
-     if(!$(".note:hover").length != 0 && !$("#note-option-menu:hover").length != 0){
+     if(!$(".note:hover").length != 0 && !$("#note-option-menu:hover").length != 0 && !$("#save-edit-title:hover").length != 0){
 
        unSelecte();
      }
@@ -71,14 +71,13 @@ function selecetNotes(){
 
 
 function unSelecte(){
-  $("#note-option-menu").css("display","none");
   $("#optimize-note .title").show();
-  //$("#optimize-note").css("height","50px");
   $("#optimize-note .date-info").show();
   $("#optimize-note .icons").show();
   $("#optimize-note input").remove();
   $("#optimize-note button").remove();
   $("#optimize-note").removeAttr("id");
+  $("#note-option-menu").css("display","none");
 }
 function renderAllNotes(notes){
   for(let i = 0; i < notes.length; i++){
@@ -105,8 +104,8 @@ function renderAllNotes(notes){
 
     <img class="description-icon" src="icons/description.svg" style="opacity:${descOpacity}">
     <div class="comment">
-    <p>${notes[i].comments.length}</p>
-    <img class="comment-icon" src="icons/comment.svg">
+     <img class="comment-icon"  src="icons/comment.svg">
+    <p style="margin-left:-${String(notes[i].comments.length).length*10}px;">${notes[i].comments.length}</p>
     </div>
 
     </div>
@@ -149,7 +148,7 @@ function dropDownBtn(){
   function selectDisplay(attr,rotate){
     let currDisplay = $(`${attr}`).css("display");
 
-    let rotation = currDisplay == "none" ? "0":"180";
+    let rotation = currDisplay == "none" ? "180":"0";
     $(`${rotate}`).css("transform",`rotate(${rotation}deg)`);
 
     return currDisplay == "none" ? "block" : "none";

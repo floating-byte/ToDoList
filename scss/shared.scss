@@ -1,0 +1,15 @@
+$_main:#8EE4AF;
+$_page:#5CDB95;
+$_note:#379683;
+$_4:#f5e6ca;
+
+
+@mixin disable-text-selection{
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+}
