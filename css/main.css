@@ -171,8 +171,6 @@
   font-size: 17px;
   font-weight: 700;
   outline: none;
-  border: none;
-  border-bottom: solid 3px white;
   margin: -32px 0px 6px 36px;
   display: block;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -215,7 +213,6 @@
   top: -31px;
   left: 2px;
   outline: none;
-  background: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 #second-page #comment-info {
@@ -301,7 +298,6 @@
   overflow-y: auto;
   margin: 5px 0px 10px 0px;
   outline: none;
-  background: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 #add-comment-active button {
@@ -332,11 +328,42 @@
   height: 19px;
   width: 369px;
   outline: none;
-  background: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 #add-comment-not-active button {
   display: none;
+}
+
+.page-read-mode #desc-text,
+.page-read-mode #new-comment-text,
+.page-read-mode #title-text {
+  text-shadow: 0px 0px black;
+  color: transparent;
+  cursor: default;
+}
+.page-read-mode #desc-text,
+.page-read-mode #new-comment-text {
+  background: #3FBB77;
+}
+.page-read-mode #title-text {
+  border: none;
+  border-bottom: solid 3px #3FBB77;
+}
+
+.page-write-mode #desc-text,
+.page-write-mode #new-comment-text,
+.page-write-mode #title-text {
+  text-shadow: 0px 0px transparent;
+  color: black;
+  cursor: auto;
+}
+.page-write-mode #desc-text,
+.page-write-mode #new-comment-text {
+  background: white;
+}
+.page-write-mode #title-text {
+  border: none;
+  border-bottom: solid 3px white;
 }
 
 * {

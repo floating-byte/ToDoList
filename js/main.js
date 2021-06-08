@@ -1,178 +1,56 @@
+var open = false;
+
 $(function(){
-  loadNotes();
+  reLoad();
   expandWindow();
 
-  save_A_Note();
-  remove_A_Note();
-
-  clearForm();
   editTitle();
+
+  toDo();
 }());
-function noteAction(){
-  showNoteInfo();
-  selecetNotes();
+function toDo(){
+  $("#cancel-btn").click(function(){  clearData();  });
+  $("#save-btn").click(function(){
+    if(saveNewNote()){
+      open = false;
+    }
+  });
+  $("#delete-note").click(function(){
+    $("#note-option-menu").hide();
+    let id = parseInt($("#option-note-id").text());
+    remove(id);
+  });
 }
 
-function setNotes(notes){
-  store.set("notes",notes);
-  loadNotes();
-}
-function getNote(id){
-  return store.get("notes")[parseInt(id)];
-}
 
 
-
-
-
-var open = false;
 function expandWindow(){
   $("#create-note-btn").click(function(){
     if(!open){
-      open = true;
       $("#create-note-btn").text("Cancle");
-      $("#second-page").addClass("for-new-note");
 
-      if($(".for-new-note").legth == 0){
-        $("#second-page").addClass("for-new-note");
-      }
+      $("#second-page").addClass("page-on");
 
-      if($(".for-show-note").length != 0){
-        $("#second-page").removeClass("for-show-note");
-      }
+      $("#second-page").addClass("page-write-mode");
+      $("#second-page").removeClass("page-read-mode");
 
+      disbleInputText(false);
+
+      clearData();
       renderSecendPage();
-      clearForm(true);
     }
     else{
-      open = false;
       $("#create-note-btn").text("New Note");
 
-      if($(".for-new-note").length != 0){
-        $("#second-page").removeClass("for-new-note");
-      }
+      $("#second-page").addClass("page-off");
 
 
       hideSecondPage();
     }
+    open = !open;
   });
+
 }
-
-function loadNotes(){
-  $("#first-page").empty();
-
-  let notes = store.get("notes");
-  if(notes == undefined){
-    return;
-  }
-
-  renderAllNotes(notes);
-  noteAction();
-}
-function clearForm(shouldClear){
-  function clear(){
-    $("#title-text").val("");
-    $("#desc-text").text("");
-    $("#new-comment-text").text("");
-    $("#comment-container").empty();
-    $("#add-comment-active").attr("id","add-comment-not-active");
-  }
-  if(shouldClear){
-    clear();
-    return ;
-  }
-  $("#cancel-btn").click(function(){
-    clearForm(true)
-  });
-}
-function save_A_Note(){
-  function getTheNote(){
-    let note = {};
-    note.title = $("#title-text").val();
-
-    if(note.title == ""){
-      $("#title-text").focus();
-      return undefined;
-    }
-    console.log("emp")
-
-    note.desc = $("#desc-text").text();
-    note.date = {};
-
-    let d = new Date();
-    note.date.year = getFullYear(d);
-    note.date.time = getFullTime(d);
-
-    note.comments = [];
-
-    let commTag = $(".comment-data");
-
-    for(let i = 0; i < commTag.length; i++){
-      let comment = {};
-      comment.text = $($(commTag[i]).find(".comment-text")).text();
-      if(comment.text != ""){
-        comment.date = {};
-        comment.date.year = $($(commTag[i]).find(".comment-date")).text();
-        comment.date.time = $($(commTag[i]).find(".comment-time")).text();
-
-        note.comments.push(comment);
-      }
-    }
-    return note;
-  }
-  $("#save-btn").click(function(){
-
-    let note = getTheNote();
-    if(note == undefined){
-      return;
-    }
-
-    let notes = [];
-    if(store.get("notes") != undefined){
-      notes = store.get("notes");
-    }
-
-    if($(".for-new-note").length != 0){
-      note.id = notes.length;
-      notes.push(note);
-    }
-    else{
-      let id = $("#note-id").text();
-      note.id = id;
-      notes[parseInt(id)] =  note;
-    }
-
-    setNotes(notes);
-    });
-}
-function remove_A_Note(id){
-  function remove(id){
-    let notes = store.get("notes");
-    notes.splice(parseInt(id),1);
-    for(let i = 0; i < notes.length;i++){
-      notes[i].id = i;
-    }
-
-    if($(".for-show-note").length != 0){
-      let shownNoteId = $(".for-show-note #note-id").text();
-      if(parseInt(id) == parseInt(shownNoteId)){
-        hideSecondPage();
-      }
-    }
-    setNotes(notes);
-  }
-
-  if(id != undefined){
-    remove(id);
-    return;
-  }
-  $("#delete-note").click(function(){
-      id = $("#option-note-id").text();
-      $("#note-option-menu").css("display","none");
-      remove_A_Note(id);
-    });
-}
-
 
 
 function editTitle(){
@@ -215,33 +93,42 @@ function saveEditedTitle(){
     let notes = store.get("notes");
     notes[parseInt(id)].title = newTitle;
 
-    setNotes(notes);
+    save(notes);
   });
 }
-
 
 
 function showNoteInfo(){
   $(".note").click(function(){
     if($(".edit-box").length != 0){
+      //prevent opening a windon when i am in edit mode
       return;
     }
-
-    renderSecendPage();
-    open = false;
-
-
-    if($(".for-show-note").length == 0){
-      $("#second-page").addClass("for-show-note");
-    }
-
-    if($(".for-new-note").length > 0){
-      $("#second-page").removeClass("for-new-note");
-      $("#create-note-btn").text("New Note");
-    }
-
+    // NOTE: close window whene double click
     let id = $(this).find(".id").text();
     note = getNote(id);
+    if(exsit(".page-read-mode")){
+      let pageId = $("#note-id").text();
+      if(pageId == id){
+        hideSecondPage();
+        return;
+      }
+    }
+
+
+    open = false;
+    clearData();
+    renderSecendPage();
+
+
+    $("#second-page").addClass("page-read-mode");
+    $("#second-page").addClass("page-on");
+
+    $("#second-page").removeClass("page-write-mode");
+    $("#create-note-btn").text("New Note");
+
+    disbleInputText(true);
+
 
     $("#note-id").text(id);
 
@@ -262,4 +149,5 @@ function showNoteInfo(){
       $("#comment-container").append(tag);
     }
   });
+
 }

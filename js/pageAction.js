@@ -3,7 +3,10 @@ $(function(){
   selecetNotes();
   dropDownBtn();
 });
-
+function noteAction(){
+  showNoteInfo();
+  selecetNotes();
+}
 function commantHandler(){
   function closeNewCommentWindow(){
     $("#new-comment-text").text("");
@@ -12,7 +15,7 @@ function commantHandler(){
 
   $(document).on("mouseup",function(){
     if($("#new-comment-text").is(":focus")){
-      if($("#add-comment-not-active").length != 0){
+      if($("#add-comment-not-active").length != 0 && $(".page-write-mode").length != 0){
         $("#add-comment-not-active").attr("id","add-comment-active");
       }
     }
@@ -114,13 +117,13 @@ function renderAllNotes(notes){
     `
     $("#first-page").prepend(tag);
   }
-
+  noteAction();
 }
 function renderSecendPage(){
   unSelecte();
   $("html").css("width",`741px`);
   $("#first-page").css("margin-left","400px");
-  $("#create-note-btn").css("left",`526px`);
+  $("#create-note-btn").css("left",`522px`);
 
   $("#second-page").css("display","block");
   $("#add-url").show();
@@ -131,14 +134,21 @@ function hideSecondPage(){
   $("#add-url").hide();
   $("#cancel-btn").hide();
   $("#save-btn").hide();
-  $("#second-page").css("display","none");
+
+  $("#second-page").hide();
 
   $("html").css("width",`352px`);
-  $("#first-page").css("margin-left","459px");
-
+  $("#create-note-btn").text("New Note");
   $("#first-page").css("margin-left","11px");
+  
   $("#create-note-btn").css("left","133px");
-  $("#second-page").css("display","none");
+
+  $("#note-id").text("");
+
+  $("#second-page").removeClass("page-on");
+  $("#second-page").removeClass("page-read-mode");
+  $("#second-page").removeClass("page-write-mode");
+
 
 
 }
@@ -161,29 +171,20 @@ function dropDownBtn(){
     $("#new-comment-text").css("display",selectDisplay("#new-comment-text","#comment-dropdown"));
   });
 }
+function disbleInputText(disable){
+  //when the second window open there is 2 modes
+  //read and write
+  //this function disble input or enable it
 
+  $("#title-text").prop( "disabled", disable);
 
-function getFullYear(date){
-  let year = date.getFullYear();
-  let day = date.getDate() ;
-  let month = date.getMonth() +1;
+  $("#desc-text").unbind("keydown");
+  $("#new-comment-text").unbind("keydown");
 
-  day = addZero(day);
-  month = addZero(month);
-
-  return `${year}/${month}/${day}`;
-}
-function getFullTime(date){
-  let minute = date.getMinutes();
-  let hour = date.getHours();
-  minute = addZero(minute);
-  hour = addZero(hour);
-
-  return `${hour}:${minute}`;
-}
-function addZero(val){
-  if(val <  10){
-    return `0${val}`;
-  }
-  return `${val}`;
+  $("#desc-text").keydown(function(){
+    return !disable;
+  });
+  $("#new-comment-text").keydown(function(){
+    return !disable;
+  });
 }

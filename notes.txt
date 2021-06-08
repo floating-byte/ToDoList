@@ -1,0 +1,3 @@
+-add edit mode to show notes
+-add save as new  button
+-scaling boxes
