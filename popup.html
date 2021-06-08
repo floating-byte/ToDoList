@@ -7,11 +7,17 @@
 <body>
 
 	<div id="note-option-menu" oncontextmenu="return false;">
-		<button type="button" name="button" id="edit-note" >Edit</button>
+		<button type="button" name="button" id="rename-note" >Rename</button>
 		<button type="button" name="button" id="delete-note">Delete</button>
 		<p id="option-note-id" style="display:none;"></p>
 	</div>
 
+	<div id="cover-layer">	</div>
+	<div id="are-u-sure">
+		<p>Are You Sure?</p>
+		<button type="button" id="yes">yes</button>
+		<button type="button" id="no">no</button>
+		</div>
 	<div id="first-page">
 
 	</div>
@@ -53,9 +59,13 @@
 	</div>
 
 	<div id="control-btns">
-		<button type="button"  id="create-note-btn">	New Note </button>
-		<button type="button" id="cancel-btn">Clear</button>
-		<button type="button" id="save-btn">Save</button>
+		<button type="button"  id="create-note-btn">New Note</button>
+		<div class="no-page">
+			<button type="button" id="clear-btn">Clear</button>
+			<button type="button" id="edit-btn">Edit</button>
+			<button type="button" id="save-btn">Save</button>
+			<button type="button" id="saveAs-btn">Save As...</button>
+		</div>
 	</div>
 
 </body>

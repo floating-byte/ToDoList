@@ -5,9 +5,18 @@ function get(){
 function getNote(id){
   return get()[id];
 }
-function save(notes){
+function save(notes,reloadPage){
   store.set("notes",notes);
-  reLoad();
+  if(reloadPage == undefined || reloadPage){
+    reLoad();
+  }
+}
+function saveNote(note,id){
+  notes = get();
+  if(id != undefined){
+    notes[id] = note;
+    save(notes,false);
+  }
 }
 function reLoad(){
   $("#first-page").empty();
@@ -20,7 +29,7 @@ function reLoad(){
 
 
 
-function saveNewNote(){
+function saveNewNote(Asnew){
   let note = getNoteData();
   if(note == undefined){
     return undefined;
@@ -29,11 +38,11 @@ function saveNewNote(){
   let notes = get();
 
 
-  if(exsit(".page-write-mode")){
+  if(exsit(".page-write-mode") || Asnew){
     note.id = notes.length;
     notes.push(note);
   }
-  else if(exist(".page-read-mode")){
+  else if(exsit(".page-edit-mode")){
     let id = $("#note-id").text();
     note.id = id;
     notes[parseInt(id)] =  note;
@@ -41,6 +50,9 @@ function saveNewNote(){
   save(notes);
   reLoad(notes);
   return true;
+}
+function saveAsNew(){
+  saveNewNote(true);
 }
 function getNoteData(){
   let note = {};

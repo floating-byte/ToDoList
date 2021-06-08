@@ -9,20 +9,68 @@ $(function(){
   toDo();
 }());
 function toDo(){
-  $("#cancel-btn").click(function(){  clearData();  });
+  $("#clear-btn").click(function(){  clearData();  });
+  $("#edit-btn").click(function(){  editPage();  });
   $("#save-btn").click(function(){
     if(saveNewNote()){
       open = false;
     }
   });
+  $("#saveAs-btn").click(function(){
+      saveAsNew();
+      open = false;
+  });
   $("#delete-note").click(function(){
     $("#note-option-menu").hide();
+    function msgState(state){
+      if(state == "hide"){
+        $("#cover-layer").hide();
+        $("#are-u-sure").hide();
+      }
+      else if(state == "show"){
+        $("#cover-layer").show();
+        $("#are-u-sure").show();
+      }
+
+    }
+
+
+    msgState("show");
+
     let id = parseInt($("#option-note-id").text());
-    remove(id);
+    $("#yes").click(function(){
+      remove(id);
+      msgState("hide");
+    });
+    $("#no").click(function(){
+      msgState("hide");
+    });
   });
 }
 
+function editPage(){
+  $("#second-page").removeClass("page-read-mode");
+  $("#second-page").addClass("page-edit-mode");
+  disbleInputText(false);
 
+  $(".read-page").addClass("edit-page");
+  $(".read-page").removeClass("read-page");
+
+}
+function removeComment(thisComment){
+    let noteId = $("#note-id").text();
+    let commentIndex = $(thisComment).parent().find(".comment-index").text();
+
+    if(noteId == ""){
+        $(thisComment).parent().remove();
+        return ;
+    }
+    noteId = parseInt(noteId);
+    note = getNote(noteId);
+    note.comments.splice(commentIndex,1);
+    saveNote(note,noteId);
+    $(thisComment).parent().remove();
+}
 
 function expandWindow(){
   $("#create-note-btn").click(function(){
@@ -33,6 +81,16 @@ function expandWindow(){
 
       $("#second-page").addClass("page-write-mode");
       $("#second-page").removeClass("page-read-mode");
+
+      $(".read-page").addClass("write-page");
+      $(".read-page").removeClass("read-page");
+
+      $(".no-page").addClass("write-page");
+      $(".no-page").removeClass("no-page");
+
+
+      $(".edit-page").addClass("write-page");
+      $(".edit-page").removeClass("edit-page");
 
       disbleInputText(false);
 
@@ -54,7 +112,7 @@ function expandWindow(){
 
 
 function editTitle(){
-  $("#edit-note").click(function(){
+  $("#rename-note").click(function(){
 
     if($(".edit-box").length != 0){
       $("#note-option-menu").css("display","none");
@@ -104,17 +162,15 @@ function showNoteInfo(){
       //prevent opening a windon when i am in edit mode
       return;
     }
-    // NOTE: close window whene double click
     let id = $(this).find(".id").text();
     note = getNote(id);
-    if(exsit(".page-read-mode")){
+    if(exsit(".page-read-mode") || exsit(".page-edit-mode") ){
       let pageId = $("#note-id").text();
       if(pageId == id){
         hideSecondPage();
         return;
       }
     }
-
 
     open = false;
     clearData();
@@ -125,6 +181,7 @@ function showNoteInfo(){
     $("#second-page").addClass("page-on");
 
     $("#second-page").removeClass("page-write-mode");
+    $("#second-page").removeClass("page-edit-mode");
     $("#create-note-btn").text("New Note");
 
     disbleInputText(true);
@@ -143,11 +200,26 @@ function showNoteInfo(){
         <p class="comment-date">${note.comments[i].date.year}</p>
         <p class="comment-time">${note.comments[i].date.time}</p>
         </div>
-        <p class="comment-text">${note.comments[i].text}<p>
+        <p class="comment-text">${note.comments[i].text}</p>
+        <img src = "icons/cancle.svg">
+        <p class="comment-index" style="display:none">${i}</p>
         </div>`;
 
       $("#comment-container").append(tag);
     }
+
+    $(".edit-page").addClass("read-page");
+    $(".edit-page").removeClass("edit-page");
+
+    $(".write-page").addClass("read-page");
+    $(".write-page").removeClass("write-page");
+
+    $(".no-page").addClass("read-page");
+    $(".no-page").removeClass("no-page");
+
+    $(".comment-data img").click(function(){ removeComment(this); });
+
+
   });
 
 }

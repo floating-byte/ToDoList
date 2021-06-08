@@ -45,44 +45,99 @@ html {
 	}
 }
 
-#control-btns {
+#create-note-btn,
+#clear-btn,
+#edit-btn,
+#save-btn,
+#saveAs-btn {
 
-	#create-note-btn,
-	#cancel-btn,
-	#save-btn {
-		width: 95px;
-		height: 28px;
+	width: 95px;
+	height: 28px;
+	display:block;
 
-		background: $_note;
+	background: $_note;
 
-		position: absolute;
-		top: 462px;
+	position: absolute;
 
+	border: transparent;
+	border-radius: 7px;
+
+	font-size: 15px;
+
+	filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+	cursor: pointer;
+
+	&:hover{
+		background: #ccc;
+		font-weight: 700;
+	}
+}
+
+#create-note-btn {
+	display:block;
+	left: 133px;
+	top: 462px;
+
+}
+
+#cover-layer{
+	display: none;
+
+	width: 352px;
+	height: 500px;
+	background: #00000029;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+#are-u-sure{
+	display: none;
+	
+
+	width: 169px;
+    height: 65px;
+    background: #3ba18d;
+    position: absolute;
+    z-index: 2;
+    top: 173px;
+    left: 91px;
 		border: transparent;
-		border-radius: 7px;
+		border-radius: 10px;
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-		font-size: 15px;
 
-		filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
-		cursor: pointer;
-		display:none;
-
-		&:hover{
-			background: #ccc;
-			font-weight: 700;
+		p{
+			font-size: 15px;
+    	font-weight: 600;
+    	margin: 0px 0px 0px 29px;
+    	text-decoration: underline;
 		}
-	}
 
-	#create-note-btn {
-		display:block;
-		left: 133px;
-	}
-	#cancel-btn {
-		left: 208px;
-	}
-	#save-btn {
-		left: 81px;
-	}
+		button{
+			position: absolute;
+			width: 73px;
+			height: 29px;
+			border: transparent;
+			border-radius: 2px;
+	    top: 30px;
+	    left: 9px;
+			background: darken(#3ba18d,2%);
+			filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+			&:hover{
+				background: #ccc;
+				font-weight: 900;
+				cursor: pointer;;
+			}
+		}
+		#yes{
+
+		}
+		#no{
+			left: 87px;
+		}
+
 
 }
 

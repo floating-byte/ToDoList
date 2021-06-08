@@ -1,3 +1,8 @@
--add edit mode to show notes
--add save as new  button
 -scaling boxes
+
+
+
+-editing the note
+-saving the note as new
+-remove comment
+-are you sure u want to delete

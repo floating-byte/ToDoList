@@ -15,7 +15,7 @@ function commantHandler(){
 
   $(document).on("mouseup",function(){
     if($("#new-comment-text").is(":focus")){
-      if($("#add-comment-not-active").length != 0 && $(".page-write-mode").length != 0){
+      if($("#add-comment-not-active").length != 0 && ($(".page-write-mode").length != 0 || $(".page-edit-mode").length != 0) ){
         $("#add-comment-not-active").attr("id","add-comment-active");
       }
     }
@@ -41,10 +41,14 @@ function commantHandler(){
         <p class="comment-date">${getFullYear(d)}</p>
         <p class="comment-time">${getFullTime(d)}</p>
         </div>
-        <p class="comment-text">${textVal}<p>
+        <p class="comment-text">${textVal}</p>
+        <img src = "icons/cancle.svg">
+        <p class="comment-index" style="display:none">${$(".comment-data").length - 1}</p>
         </div>`;
       $("#comment-container").prepend(tag);
       closeNewCommentWindow();
+      $(".comment-data img").click(function(){ removeComment(this); });
+
     }
   });
 
@@ -126,21 +130,18 @@ function renderSecendPage(){
   $("#create-note-btn").css("left",`522px`);
 
   $("#second-page").css("display","block");
-  $("#add-url").show();
-  $("#cancel-btn").show();
-  $("#save-btn").show();
+
+  //$("#clear-btn").show();
+  //$("#save-btn").show();
 }
 function hideSecondPage(){
-  $("#add-url").hide();
-  $("#cancel-btn").hide();
-  $("#save-btn").hide();
 
   $("#second-page").hide();
 
   $("html").css("width",`352px`);
   $("#create-note-btn").text("New Note");
   $("#first-page").css("margin-left","11px");
-  
+
   $("#create-note-btn").css("left","133px");
 
   $("#note-id").text("");
@@ -150,7 +151,13 @@ function hideSecondPage(){
   $("#second-page").removeClass("page-write-mode");
 
 
+  $(".write-page").addClass("no-page");
+  $(".read-page").addClass("no-page");
+  $(".edit-page").addClass("no-page");
 
+  $(".write-page").removeClass("write-page");
+  $(".read-page").removeClass("read-page");
+  $(".edit-page").removeClass("edit-page");
 }
 
 
